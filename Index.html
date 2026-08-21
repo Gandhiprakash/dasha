@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dasha Auto Refrigeration | Truck Refrigeration, Bus A/C & Container Solutions</title>
+    <meta name="description" content="Dasha Auto Refrigeration provides truck refrigeration units, bus A/C, cabin AC and container solutions with 15+ years of experience.">
+    <meta name="keywords" content="truck refrigeration, bus AC, cabin AC, container solutions, D-Cool, refrigerated container">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dashaautorefrigeration.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config={theme:{extend:{colors:{primary:{DEFAULT:'#0A1628',light:'#0F2240',lighter:'#163358',dark:'#060E1A',50:'#E4EAF2'},accent:{DEFAULT:'#00C6F0',light:'#5DD8F5',dark:'#009ECA',50:'#E0F8FE'},gold:{DEFAULT:'#F0A500',light:'#FFB92E',dark:'#CC8C00'}},fontFamily:{sans:['Inter','sans-serif'],serif:['Playfair Display','serif']}}}}
+    </script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;color:#0A1628;overflow-x:hidden;background:#fff}
+        ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#0A1628}::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#00C6F0,#009ECA);border-radius:3px}
+
+        /* === 3D CORE === */
+        .tilt-3d{transform-style:preserve-3d;will-change:transform;transition:transform .1s linear}
+        .tilt-3d .tilt-inner{transform:translateZ(40px)}
+        .tilt-3d .tilt-depth{transform:translateZ(60px)}
+        .glare-layer{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:10;opacity:0;transition:opacity .3s}
+        .tilt-3d:hover .glare-layer{opacity:1}
+
+        /* === NAVBAR === */
+        .navbar{transition:all .4s cubic-bezier(.22,1,.36,1)}
+        .navbar.scrolled{background:rgba(10,22,40,.95);backdrop-filter:blur(24px) saturate(200%);box-shadow:0 4px 40px rgba(0,0,0,.5);padding-top:.5rem;padding-bottom:.5rem}
+        .navbar.scrolled .nav-logo-wrap{transform:scale(.85)}
+        .nav-logo-wrap{transition:transform .4s cubic-bezier(.22,1,.36,1)}
+        .nav-logo{height:52px;object-fit:contain;filter:brightness(1.15) drop-shadow(0 0 12px rgba(0,198,240,.25))}
+        .nav-link{position:relative;color:rgba(255,255,255,.65);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:color .3s;padding:4px 0}
+        .nav-link::after{content:'';position:absolute;bottom:-2px;left:50%;width:0;height:2px;background:linear-gradient(90deg,#00C6F0,#F0A500);transition:all .4s cubic-bezier(.22,1,.36,1);transform:translateX(-50%);border-radius:1px;box-shadow:0 0 8px rgba(0,198,240,.4)}
+        .nav-link:hover,.nav-link.active{color:#fff}
+        .nav-link:hover::after,.nav-link.active::after{width:100%}
+
+        /* === MOBILE MENU === */
+        .mobile-menu{transform:translateX(100%) rotateY(-15deg);transform-origin:right center;transition:all .5s cubic-bezier(.22,1,.36,1)}
+        .mobile-menu.open{transform:translateX(0) rotateY(0)}
+        .mobile-overlay{opacity:0;pointer-events:none;transition:opacity .4s}.mobile-overlay.open{opacity:1;pointer-events:auto}
+
+        /* === HERO === */
+        .hero-section{position:relative;overflow:hidden;perspective:1200px}
+        .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;transform-style:preserve-3d}
+        .hero-slide.active{opacity:1}
+        .hero-slide .slide-bg{position:absolute;inset:0;background-size:cover;background-position:center;will-change:transform}
+        .hero-slide.active .slide-bg{animation:kenBurns 14s ease-in-out infinite alternate}
+        @keyframes kenBurns{0%{transform:scale(1)}100%{transform:scale(1.12)}}
+        .hero-overlay{background:linear-gradient(135deg,rgba(10,22,40,.93) 0%,rgba(15,34,64,.78) 45%,rgba(10,22,40,.5) 100%)}
+        .hero-overlay-mob{background:linear-gradient(180deg,rgba(10,22,40,.88) 0%,rgba(10,22,40,.6) 50%,rgba(10,22,40,.95) 100%)}
+        .hero-line{width:70px;height:3px;background:linear-gradient(90deg,#00C6F0,#F0A500);border-radius:2px;transform:scaleX(0) rotateY(90deg);transform-origin:left;transition:all .9s cubic-bezier(.22,1,.36,1) .4s;box-shadow:0 0 15px rgba(0,198,240,.4)}
+        .hero-slide.active .hero-line{transform:scaleX(1) rotateY(0)}
+        .hero-title{opacity:0;transform:translateZ(-80px) rotateX(15deg);transition:all 1s cubic-bezier(.22,1,.36,1) .3s;transform-style:preserve-3d}
+        .hero-sub{opacity:0;transform:translateZ(-60px) rotateX(10deg);transition:all 1s cubic-bezier(.22,1,.36,1) .55s}
+        .hero-btns{opacity:0;transform:translateZ(-50px) rotateX(8deg);transition:all 1s cubic-bezier(.22,1,.36,1) .75s}
+        .hero-slide.active .hero-title,.hero-slide.active .hero-sub,.hero-slide.active .hero-btns{opacity:1;transform:translateZ(0) rotateX(0)}
+        .hero-3d-text{text-shadow:0 1px 0 rgba(0,198,240,.1),0 2px 0 rgba(0,198,240,.05),0 4px 20px rgba(0,0,0,.3)}
+        .slider-dot{width:10px;height:10px;border-radius:50%;border:2px solid rgba(255,255,255,.25);background:transparent;transition:all .4s cubic-bezier(.22,1,.36,1);cursor:pointer}
+        .slider-dot.active{background:#00C6F0;border-color:#00C6F0;box-shadow:0 0 15px rgba(0,198,240,.6);transform:scale(1.3)}
+
+        /* === 3D FLOATING TRUCK === */
+        .truck-3d{position:absolute;right:5%;top:50%;transform:translateY(-50%) rotateY(-25deg) rotateX(5deg);opacity:.12;animation:truckFloat 8s ease-in-out infinite;transform-style:preserve-3d;pointer-events:none}
+        @keyframes truckFloat{0%,100%{transform:translateY(-50%) rotateY(-25deg) rotateX(5deg) translateZ(0)}25%{transform:translateY(-54%) rotateY(-22deg) rotateX(3deg) translateZ(20px)}50%{transform:translateY(-48%) rotateY(-28deg) rotateX(7deg) translateZ(-10px)}75%{transform:translateY(-52%) rotateY(-20deg) rotateX(4deg) translateZ(15px)}}
+
+        /* === 3D SHAPES === */
+        .shape-3d{position:absolute;transform-style:preserve-3d;pointer-events:none}
+        .cube-3d{width:50px;height:50px;transform-style:preserve-3d;animation:cubeRotate 25s linear infinite}
+        .cube-face{position:absolute;width:50px;height:50px;border:1px solid rgba(0,198,240,.12);background:rgba(0,198,240,.02);backdrop-filter:blur(1px)}
+        .cube-face.f{transform:translateZ(25px)}.cube-face.bk{transform:rotateY(180deg) translateZ(25px)}.cube-face.l{transform:rotateY(-90deg) translateZ(25px)}.cube-face.r{transform:rotateY(90deg) translateZ(25px)}.cube-face.t{transform:rotateX(90deg) translateZ(25px)}.cube-face.bt{transform:rotateX(-90deg) translateZ(25px)}
+        @keyframes cubeRotate{from{transform:rotateX(0) rotateY(0)}to{transform:rotateX(360deg) rotateY(360deg)}}
+        .octa-3d{width:40px;height:40px;transform-style:preserve-3d;animation:octaRotate 20s linear infinite}
+        .octa-face{position:absolute;width:40px;height:40px;border:1px solid rgba(240,165,0,.1);background:rgba(240,165,0,.02);clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%)}
+        @keyframes octaRotate{from{transform:rotateX(0) rotateZ(0)}to{transform:rotateX(360deg) rotateZ(360deg)}}
+        .ring-3d{width:80px;height:80px;border:1.5px solid rgba(0,198,240,.08);border-radius:50%;animation:ringRotate 15s linear infinite;transform-style:preserve-3d}
+        @keyframes ringRotate{from{transform:rotateX(70deg) rotateZ(0)}to{transform:rotateX(70deg) rotateZ(360deg)}}
+
+        /* === SECTION TAG === */
+        .section-tag{display:inline-flex;align-items:center;gap:8px;font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#00C6F0;background:rgba(0,198,240,.07);padding:7px 18px;border-radius:50px;border:1px solid rgba(0,198,240,.12)}
+        .section-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:#00C6F0;box-shadow:0 0 8px rgba(0,198,240,.5)}
+        .section-line{width:50px;height:3px;background:linear-gradient(90deg,#00C6F0,#F0A500);border-radius:2px;box-shadow:0 0 10px rgba(0,198,240,.3)}
+
+        /* === WAVE DIVIDER === */
+        .wave-div{position:absolute;bottom:-1px;left:0;width:100%;overflow:hidden;line-height:0}.wave-div svg{position:relative;display:block;width:calc(100% + 1.3px);height:70px}
+
+        /* === 3D SERVICE CARDS === */
+        .service-card{position:relative;background:#fff;border-radius:20px;overflow:hidden;transform-style:preserve-3d;will-change:transform;border:1px solid rgba(10,22,40,.04);box-shadow:0 4px 25px rgba(10,22,40,.05);transition:box-shadow .4s}
+        .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00C6F0,#F0A500);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.22,1,.36,1);z-index:5}
+        .service-card:hover::before{transform:scaleX(1)}
+        .service-card:hover{box-shadow:0 25px 70px rgba(10,22,40,.15)}
+        .service-card .s-img{transition:transform .8s cubic-bezier(.22,1,.36,1)}.service-card:hover .s-img{transform:scale(1.15)}
+        .service-card .s-icon-wrap{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,rgba(0,198,240,.1),rgba(0,198,240,.03));display:flex;align-items:center;justify-content:center;transition:all .5s cubic-bezier(.22,1,.36,1);transform:translateZ(30px)}
+        .service-card:hover .s-icon-wrap{background:linear-gradient(135deg,#00C6F0,#009ECA);box-shadow:0 10px 30px rgba(0,198,240,.4);transform:translateZ(50px) scale(1.1) rotate(-5deg)}
+
+        /* === 3D PRODUCT CARDS === */
+        .product-card{position:relative;background:#fff;border-radius:20px;overflow:hidden;transform-style:preserve-3d;will-change:transform;border:1px solid rgba(10,22,40,.05);box-shadow:0 2px 20px rgba(10,22,40,.04);transition:box-shadow .4s}
+        .product-card:hover{box-shadow:0 30px 70px rgba(10,22,40,.14)}
+        .product-card .p-img{transition:transform .8s cubic-bezier(.22,1,.36,1);transform:translateZ(20px)}.product-card:hover .p-img{transform:translateZ(40px) scale(1.08)}
+        .product-card .p-badge{position:absolute;top:16px;left:16px;background:linear-gradient(135deg,#00C6F0,#009ECA);color:#fff;font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:6px 16px;border-radius:50px;box-shadow:0 6px 20px rgba(0,198,240,.5);z-index:5;transform:translateZ(50px)}
+
+        /* === 3D WHY CARDS === */
+        .why-card{position:relative;background:rgba(255,255,255,.04);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:34px 28px;transform-style:preserve-3d;will-change:transform;overflow:hidden;transition:box-shadow .4s}
+        .why-card::after{content:'';position:absolute;inset:-1px;border-radius:18px;background:linear-gradient(135deg,rgba(0,198,240,0),rgba(0,198,240,0));z-index:-1;transition:all .5s}
+        .why-card:hover::after{background:linear-gradient(135deg,rgba(0,198,240,.3),rgba(240,165,0,.1))}
+        .why-card:hover{box-shadow:0 20px 50px rgba(0,198,240,.1)}
+        .why-card .w-icon{width:54px;height:54px;border-radius:14px;background:rgba(0,198,240,.08);display:flex;align-items:center;justify-content:center;transition:all .5s cubic-bezier(.22,1,.36,1);transform:translateZ(30px)}
+        .why-card:hover .w-icon{background:linear-gradient(135deg,#00C6F0,#009ECA);box-shadow:0 10px 30px rgba(0,198,240,.4);transform:translateZ(60px) scale(1.15) rotate(-5deg)}
+
+        /* === 3D SOLUTIONS === */
+        .sol-item{position:relative;overflow:hidden;border-radius:16px;cursor:pointer;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+        .sol-item:hover{transform:translateZ(30px) scale(1.03)}
+        .sol-item img{transition:transform .8s cubic-bezier(.22,1,.36,1);width:100%;height:100%;object-fit:cover}
+        .sol-item:hover img{transform:scale(1.2)}
+        .sol-item .sol-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.9) 0%,rgba(10,22,40,.1) 55%,transparent 100%);transition:all .5s}
+        .sol-item:hover .sol-grad{background:linear-gradient(to top,rgba(0,198,240,.85) 0%,rgba(0,158,202,.2) 55%,transparent 100%)}
+
+        /* === 3D GALLERY === */
+        .gal-item{position:relative;overflow:hidden;border-radius:14px;cursor:pointer;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+        .gal-item:hover{transform:translateZ(20px) scale(1.03)}
+        .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.22,1,.36,1)}
+        .gal-item:hover img{transform:scale(1.15)}
+        .gal-item .gal-over{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,198,240,.75),rgba(10,22,40,.65));opacity:0;transition:all .4s;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;transform:translateZ(30px)}
+        .gal-item:hover .gal-over{opacity:1}
+        .gal-filter-btn{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 22px;border-radius:50px;border:1.5px solid rgba(10,22,40,.1);color:#64748B;background:transparent;transition:all .3s}
+        .gal-filter-btn.active{color:#fff;border-color:transparent;background:linear-gradient(135deg,#00C6F0,#009ECA);box-shadow:0 4px 20px rgba(0,198,240,.4);transform:translateZ(10px)}
+        .gal-filter-btn:not(.active):hover{border-color:#00C6F0;color:#00C6F0}
+
+        /* === LIGHTBOX === */
+        .lightbox{opacity:0;pointer-events:none;transition:opacity .35s;perspective:1000px}
+        .lightbox.open{opacity:1;pointer-events:auto}
+        .lightbox-img{transform:rotateY(15deg) scale(.85);transition:transform .6s cubic-bezier(.22,1,.36,1)}
+        .lightbox.open .lightbox-img{transform:rotateY(0) scale(1)}
+
+        /* === CTA === */
+        .cta-bg{background:linear-gradient(135deg,#060E1A 0%,#0A1628 30%,#0F2240 70%,#163358 100%);position:relative;overflow:hidden;perspective:800px}
+        .cta-bg::before{content:'';position:absolute;top:-80px;right:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(0,198,240,.15),transparent 70%);border-radius:50%;animation:pulse3d 4s ease-in-out infinite}
+        .cta-bg::after{content:'';position:absolute;bottom:-80px;left:-80px;width:250px;height:250px;background:radial-gradient(circle,rgba(240,165,0,.1),transparent 70%);border-radius:50%;animation:pulse3d 5s ease-in-out infinite 1.5s}
+        @keyframes pulse3d{0%,100%{transform:scale(1) translateZ(0);opacity:1}50%{transform:scale(1.2) translateZ(30px);opacity:.6}}
+
+        /* === 3D BUTTONS === */
+        .btn-accent{position:relative;background:linear-gradient(135deg,#00C6F0,#009ECA);color:#fff;font-weight:700;overflow:hidden;transform-style:preserve-3d;transition:all .4s cubic-bezier(.22,1,.36,1);box-shadow:0 4px 20px rgba(0,198,240,.35),0 2px 4px rgba(0,0,0,.1)}
+        .btn-accent::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#009ECA,#00C6F0);opacity:0;transition:opacity .3s}
+        .btn-accent:hover{transform:translateY(-4px) translateZ(10px);box-shadow:0 12px 40px rgba(0,198,240,.5),0 4px 8px rgba(0,0,0,.15)}
+        .btn-accent:active{transform:translateY(-1px) translateZ(5px)}
+        .btn-accent span,.btn-accent .iconify{position:relative;z-index:1}
+        .btn-glass{border:1.5px solid rgba(255,255,255,.2);color:#fff;font-weight:500;backdrop-filter:blur(12px);background:rgba(255,255,255,.05);transform-style:preserve-3d;transition:all .4s cubic-bezier(.22,1,.36,1)}
+        .btn-glass:hover{border-color:rgba(0,198,240,.5);background:rgba(0,198,240,.1);transform:translateY(-4px) translateZ(10px);box-shadow:0 12px 40px rgba(0,198,240,.2)}
+        .btn-wa{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;font-weight:700;transform-style:preserve-3d;transition:all .4s cubic-bezier(.22,1,.36,1);box-shadow:0 4px 20px rgba(37,211,102,.35)}
+        .btn-wa:hover{transform:translateY(-4px) translateZ(10px);box-shadow:0 12px 40px rgba(37,211,102,.5)}
+
+        /* === 3D FORM === */
+        .form-field{position:relative}
+        .form-field input,.form-field select,.form-field textarea{width:100%;padding:15px 20px;border:1.5px solid #E2E8F0;border-radius:14px;font-size:.875rem;background:#FAFBFD;transition:all .4s;color:#0A1628;outline:none;transform-style:preserve-3d}
+        .form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:#00C6F0;box-shadow:0 0 0 4px rgba(0,198,240,.1),0 8px 25px rgba(0,198,240,.08);background:#fff;transform:translateZ(5px)}
+        .form-field label{position:absolute;left:18px;top:-9px;background:#fff;padding:0 8px;font-size:.68rem;font-weight:700;color:#94A3B8;letter-spacing:.06em;text-transform:uppercase;transition:all .3s}
+        .form-field input:focus~label,.form-field select:focus~label,.form-field textarea:focus~label{color:#00C6F0;transform:translateZ(10px)}
+
+        /* === 3D CONTACT CARDS === */
+        .contact-card{transform-style:preserve-3d;will-change:transform;transition:box-shadow .4s}
+        .contact-card:hover{box-shadow:0 20px 50px rgba(10,22,40,.1)}
+        .contact-card .cc-icon{transition:all .5s cubic-bezier(.22,1,.36,1);transform:translateZ(20px)}
+        .contact-card:hover .cc-icon{transform:translateZ(40px) scale(1.1) rotate(-5deg)}
+
+        /* === TOAST === */
+        .toast{transform:translateX(120%) rotateY(15deg);transition:all .6s cubic-bezier(.22,1,.36,1);transform-style:preserve-3d}.toast.show{transform:translateX(0) rotateY(0)}
+
+        /* === BACK TO TOP === */
+        .btt{opacity:0;pointer-events:none;transform:translateY(15px) rotateX(30deg);transition:all .4s cubic-bezier(.22,1,.36,1)}.btt.vis{opacity:1;pointer-events:auto;transform:translateY(0) rotateX(0)}
+
+        /* === MOBILE BAR === */
+        .mob-bar{box-shadow:0 -4px 30px rgba(0,0,0,.15);backdrop-filter:blur(20px);background:rgba(255,255,255,.92)}
+
+        /* === 3D REVEAL ANIMATIONS === */
+        .rv{opacity:0;transform:perspective(800px) rotateX(12deg) translateY(50px);transition:all 1s cubic-bezier(.22,1,.36,1)}.rv.vis{opacity:1;transform:perspective(800px) rotateX(0) translateY(0)}
+        .rv-l{opacity:0;transform:perspective(800px) rotateY(12deg) translateX(-50px);transition:all 1s cubic-bezier(.22,1,.36,1)}.rv-l.vis{opacity:1;transform:perspective(800px) rotateY(0) translateX(0)}
+        .rv-r{opacity:0;transform:perspective(800px) rotateY(-12deg) translateX(50px);transition:all 1s cubic-bezier(.22,1,.36,1)}.rv-r.vis{opacity:1;transform:perspective(800px) rotateY(0) translateX(0)}
+        .rv-s{opacity:0;transform:perspective(800px) scale(.85) translateZ(-40px);transition:all 1s cubic-bezier(.22,1,.36,1)}.rv-s.vis{opacity:1;transform:perspective(800px) scale(1) translateZ(0)}
+        .rv-z{opacity:0;transform:perspective(800px) translateZ(-60px) scale(.9);transition:all 1s cubic-bezier(.22,1,.36,1)}.rv-z.vis{opacity:1;transform:perspective(800px) translateZ(0) scale(1)}
+        .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s}
+
+        .ctr{font-variant-numeric:tabular-nums}
+
+        /* === DECORATIVE === */
+        .deco-circle{position:absolute;border-radius:50%;border:1px solid rgba(0,198,240,.08);pointer-events:none}
+        .deco-dot{position:absolute;width:4px;height:4px;border-radius:50%;background:rgba(0,198,240,.25);pointer-events:none}
+
+        /* === 3D STATS FLOAT === */
+        .stat-float{animation:statFloat 4s ease-in-out infinite}
+        @keyframes statFloat{0%,100%{transform:translateY(0) rotateX(0)}50%{transform:translateY(-8px) rotateX(3deg)}}
+
+        /* === RESPONSIVE === */
+        @media(max-width:767px){.hero-title{font-size:1.6rem!important;line-height:1.25!important}.hero-sub{font-size:.88rem!important}.truck-3d{display:none}}
+        @media(min-width:768px) and (max-width:1023px){.hero-title{font-size:2.6rem!important}.truck-3d{opacity:.08;right:2%}}
+        @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.rv,.rv-l,.rv-r,.rv-s,.rv-z{opacity:1;transform:none}.hero-title,.hero-sub,.hero-btns,.hero-line{opacity:1;transform:none}.hero-slide .slide-bg{animation:none!important}.truck-3d,.cube-3d,.octa-3d,.ring-3d{animation:none!important}}
+    </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar fixed top-0 left-0 right-0 z-50 bg-primary/80 backdrop-blur-xl border-b border-white/5" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 md:h-20">
+            <a href="#home" class="nav-logo-wrap flex items-center gap-2.5 shrink-0">
+                <img src="https://z-cdn-media.chatglm.cn/files/9bd35295-f8c9-4411-8bb1-ea918da52af4.jpg?auth_key=1887038038-f1be63456f864fcabd0bd3c40af07791-0-4857fc21f4c352f9bb146505bd783e65" alt="Dasha Auto Refrigeration Logo" class="nav-logo">
+                <div class="hidden sm:block">
+                    <span class="text-white font-bold text-sm tracking-wide" style="font-family:'Playfair Display',serif">DASHA</span>
+                    <span class="block text-[9px] text-accent tracking-[.2em] uppercase font-semibold -mt-0.5">Auto Refrigeration</span>
+                </div>
+            </a>
+            <div class="hidden lg:flex items-center gap-7">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#products" class="nav-link">Products</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="#contact" class="hidden md:inline-flex btn-accent px-6 py-2.5 rounded-full text-[.68rem] font-bold tracking-wider uppercase"><span>Get Enquiry</span></a>
+                <button id="menuToggle" class="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors" aria-label="Menu"><span class="iconify" data-icon="lucide:menu" data-width="22"></span></button>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden" id="mobileOverlay"></div>
+    <div class="mobile-menu fixed top-0 right-0 bottom-0 w-72 z-50 lg:hidden" id="mobileMenu" style="background:linear-gradient(180deg,#060E1A,#0A1628)">
+        <div class="flex items-center justify-between p-5 border-b border-white/8"><span class="text-white font-bold text-sm" style="font-family:'Playfair Display',serif">DASHA</span><button id="menuClose" class="text-white/60 hover:text-white p-1" aria-label="Close"><span class="iconify" data-icon="lucide:x" data-width="20"></span></button></div>
+        <div class="flex flex-col p-5 gap-1">
+            <a href="#home" class="mob-link text-white/70 hover:text-white hover:bg-white/5 px-4 py-3.5 rounded-xl text-sm font-medium transition-all">Home</a>
+            <a href="#about" class="mob-link text-white/70 hover:text-white hover:bg-white/5 px-4 py-3.5 rounded-xl text-sm font-medium transition-all">About Us</a>
+            <a href="#services" class="mob-link text-white/70 hover:text-white hover:bg-white/5 px-4 py-3.5 rounded-xl text-sm font-medium transition-all">Services</a>
+            <a href="#products" class="mob-link text-white/70 hover:text-white hover:bg-white/5 px-4 py-3.5 rounded-xl text-sm font-medium transition-all">Products</a>
+            <a href="#gallery" class="mob-link text-white/70 hover:text-white hover:bg-white/5 px-4 py-3.5 rounded-xl text-sm font-medium transition-all">Gallery</a>
+            <a href="#contact" class="mob-link text-white/70 hover:text-white hover:bg-white/5 px-4 py-3.5 rounded-xl text-sm font-medium transition-all">Contact</a>
+            <div class="mt-5 pt-5 border-t border-white/8"><a href="#contact" class="btn-accent block text-center px-5 py-3 rounded-full text-xs font-bold tracking-wider uppercase"><span>Get Enquiry</span></a></div>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="home" class="hero-section h-screen min-h-[650px] max-h:[1050px] bg-primary-dark">
+    <!-- 3D Floating Truck SVG -->
+    <div class="truck-3d hidden md:block" style="width:420px">
+        <svg viewBox="0 0 420 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="60" width="250" height="110" rx="6" stroke="rgba(0,198,240,0.25)" stroke-width="1.5" fill="rgba(0,198,240,0.03)"/>
+            <rect x="25" y="40" width="220" height="22" rx="3" stroke="rgba(0,198,240,0.2)" stroke-width="1" fill="rgba(0,198,240,0.02)"/>
+            <text x="135" y="55" text-anchor="middle" fill="rgba(0,198,240,0.35)" font-size="11" font-weight="800" letter-spacing="3">D-COOL</text>
+            <path d="M260 60 L260 170 L370 170 L370 95 L330 60 Z" stroke="rgba(0,198,240,0.25)" stroke-width="1.5" fill="rgba(0,198,240,0.03)"/>
+            <rect x="275" y="80" width="70" height="40" rx="3" stroke="rgba(0,198,240,0.15)" stroke-width="1" fill="rgba(0,198,240,0.02)"/>
+            <circle cx="80" cy="180" r="24" stroke="rgba(0,198,240,0.2)" stroke-width="1.5" fill="none"/>
+            <circle cx="80" cy="180" r="10" stroke="rgba(0,198,240,0.15)" stroke-width="1" fill="rgba(0,198,240,0.05)"/>
+            <circle cx="80" cy="180" r="3" fill="rgba(0,198,240,0.2)"/>
+            <circle cx="200" cy="180" r="24" stroke="rgba(0,198,240,0.2)" stroke-width="1.5" fill="none"/>
+            <circle cx="200" cy="180" r="10" stroke="rgba(0,198,240,0.15)" stroke-width="1" fill="rgba(0,198,240,0.05)"/>
+            <circle cx="200" cy="180" r="3" fill="rgba(0,198,240,0.2)"/>
+            <circle cx="330" cy="180" r="24" stroke="rgba(0,198,240,0.2)" stroke-width="1.5" fill="none"/>
+            <circle cx="330" cy="180" r="10" stroke="rgba(0,198,240,0.15)" stroke-width="1" fill="rgba(0,198,240,0.05)"/>
+            <circle cx="330" cy="180" r="3" fill="rgba(0,198,240,0.2)"/>
+            <line x1="5" y1="200" x2="400" y2="200" stroke="rgba(0,198,240,0.1)" stroke-width="1" stroke-dasharray="8,6"/>
+        </svg>
+    </div>
+    <!-- 3D Rotating Cube -->
+    <div class="shape-3d hidden lg:block" style="top:18%;left:8%">
+        <div class="cube-3d">
+            <div class="cube-face f"></div><div class="cube-face bk"></div><div class="cube-face l"></div><div class="cube-face r"></div><div class="cube-face t"></div><div class="cube-face bt"></div>
+        </div>
+    </div>
+    <!-- 3D Ring -->
+    <div class="shape-3d hidden lg:block" style="bottom:20%;left:15%">
+        <div class="ring-3d"></div>
+    </div>
+    <!-- 3D Octahedron -->
+    <div class="shape-3d hidden lg:block" style="top:25%;right:30%">
+        <div class="octa-3d">
+            <div class="octa-face" style="transform:translateZ(20px)"></div>
+            <div class="octa-face" style="transform:rotateY(90deg) translateZ(20px)"></div>
+            <div class="octa-face" style="transform:rotateY(180deg) translateZ(20px)"></div>
+            <div class="octa-face" style="transform:rotateY(270deg) translateZ(20px)"></div>
+        </div>
+    </div>
+
+    <!-- Slides -->
+    <div class="hero-slide active" data-slide="0">
+        <div class="slide-bg" style="background-image:url('https://z-cdn-media.chatglm.cn/files/b475507e-3d87-4e81-b32b-6a6b0dfa15f8.jpg?auth_key=1887038038-8990a9b343f34495af7bfa20729b70d8-0-ac5f58619cd76a1ef67cb873a4b6ddb3')"></div>
+        <div class="hero-overlay absolute inset-0 hidden md:block"></div>
+        <div class="hero-overlay-mob absolute inset-0 md:hidden"></div>
+        <div class="relative z-10 flex flex-col justify-center h-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-24" style="transform-style:preserve-3d">
+            <div class="hero-line mb-6"></div>
+            <h1 class="hero-title hero-3d-text text-white font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.08] max-w-3xl" style="font-family:'Playfair Display',serif">Reliable Refrigeration.<br><span class="text-accent">Powerful Performance.</span></h1>
+            <p class="hero-sub text-white/55 text-base sm:text-lg mt-5 max-w-xl leading-relaxed font-light">Advanced refrigeration solutions for commercial vehicles and transportation.</p>
+            <div class="hero-btns flex flex-wrap gap-4 mt-9">
+                <a href="#services" class="btn-accent px-8 py-4 rounded-full text-sm font-bold tracking-wide inline-flex items-center gap-2.5"><span>Explore Solutions</span><span class="iconify" data-icon="lucide:arrow-right" data-width="16"></span></a>
+                <a href="#contact" class="btn-glass px-8 py-4 rounded-full text-sm font-medium tracking-wide">Contact Us</a>
+            </div>
+        </div>
+    </div>
+    <div class="hero-slide" data-slide="1">
+        <div class="slide-bg" style="background-image:url('https://z-cdn-media.chatglm.cn/files/cc40d955-9cde-4a55-87c3-e558c6e85bfd.jpg?auth_key=1887038038-353475c271fd47538d01351a049584c8-0-658fbea81f31dedccb536e8b812ad5fa')"></div>
+        <div class="hero-overlay absolute inset-0 hidden md:block"></div>
+        <div class="hero-overlay-mob absolute inset-0 md:hidden"></div>
+        <div class="relative z-10 flex flex-col justify-center h-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-24" style="transform-style:preserve-3d">
+            <div class="hero-line mb-6"></div>
+            <h1 class="hero-title hero-3d-text text-white font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.08] max-w-3xl" style="font-family:'Playfair Display',serif">Keeping Cargo <span class="text-accent">Fresh</span> on Every Journey</h1>
+            <p class="hero-sub text-white/55 text-base sm:text-lg mt-5 max-w-xl leading-relaxed font-light">Professional truck refrigeration and container solutions.</p>
+            <div class="hero-btns flex flex-wrap gap-4 mt-9">
+                <a href="#products" class="btn-accent px-8 py-4 rounded-full text-sm font-bold tracking-wide inline-flex items-center gap-2.5"><span>View Products</span><span class="iconify" data-icon="lucide:arrow-right" data-width="16"></span></a>
+                <a href="#contact" class="btn-glass px-8 py-4 rounded-full text-sm font-medium tracking-wide">Contact Us</a>
+            </div>
+        </div>
+    </div>
+    <div class="hero-slide" data-slide="2">
+        <div class="slide-bg" style="background-image:url('https://picsum.photos/seed/busac3d/1920/1080.jpg')"></div>
+        <div class="hero-overlay absolute inset-0 hidden md:block"></div>
+        <div class="hero-overlay-mob absolute inset-0 md:hidden"></div>
+        <div class="relative z-10 flex flex-col justify-center h-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-24" style="transform-style:preserve-3d">
+            <div class="hero-line mb-6"></div>
+            <h1 class="hero-title hero-3d-text text-white font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.08] max-w-3xl" style="font-family:'Playfair Display',serif">Comfort Meets <span class="text-accent">Performance</span></h1>
+            <p class="hero-sub text-white/55 text-base sm:text-lg mt-5 max-w-xl leading-relaxed font-light">Reliable A/C solutions for buses, cabins and commercial vehicles.</p>
+            <div class="hero-btns flex flex-wrap gap-4 mt-9">
+                <a href="#contact" class="btn-accent px-8 py-4 rounded-full text-sm font-bold tracking-wide inline-flex items-center gap-2.5"><span>Get Enquiry</span><span class="iconify" data-icon="lucide:arrow-right" data-width="16"></span></a>
+                <a href="#services" class="btn-glass px-8 py-4 rounded-full text-sm font-medium tracking-wide">Our Services</a>
+            </div>
+        </div>
+    </div>
+    <div class="hero-slide" data-slide="3">
+        <div class="slide-bg" style="background-image:url('https://picsum.photos/seed/coldchain3d/1920/1080.jpg')"></div>
+        <div class="hero-overlay absolute inset-0 hidden md:block"></div>
+        <div class="hero-overlay-mob absolute inset-0 md:hidden"></div>
+        <div class="relative z-10 flex flex-col justify-center h-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-24" style="transform-style:preserve-3d">
+            <div class="hero-line mb-6"></div>
+            <h1 class="hero-title hero-3d-text text-white font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.08] max-w-3xl" style="font-family:'Playfair Display',serif"><span class="text-accent">15+ Years</span> of Experience</h1>
+            <p class="hero-sub text-white/55 text-base sm:text-lg mt-5 max-w-xl leading-relaxed font-light">Trusted solutions backed by experience and expertise.</p>
+            <div class="hero-btns flex flex-wrap gap-4 mt-9">
+                <a href="#about" class="btn-accent px-8 py-4 rounded-full text-sm font-bold tracking-wide inline-flex items-center gap-2.5"><span>About Dasha</span><span class="iconify" data-icon="lucide:arrow-right" data-width="16"></span></a>
+                <a href="#contact" class="btn-glass px-8 py-4 rounded-full text-sm font-medium tracking-wide">Contact Us</a>
+            </div>
+        </div>
+    </div>
+    <!-- Dots -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+        <div class="slider-dot active" data-dot="0"></div><div class="slider-dot" data-dot="1"></div><div class="slider-dot" data-dot="2"></div><div class="slider-dot" data-dot="3"></div>
+    </div>
+    <button class="absolute left-3 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white/60 flex items-center justify-center hover:bg-white/15 hover:text-white hover:border-accent/30 transition-all" id="slidePrev" aria-label="Previous"><span class="iconify" data-icon="lucide:chevron-left" data-width="20"></span></button>
+    <button class="absolute right-3 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white/60 flex items-center justify-center hover:bg-white/15 hover:text-white hover:border-accent/30 transition-all" id="slideNext" aria-label="Next"><span class="iconify" data-icon="lucide:chevron-right" data-width="20"></span></button>
+    <div class="absolute bottom-8 right-8 z-20 hidden lg:flex flex-col items-center gap-2 text-white/25 text-[10px] tracking-[.25em] uppercase">
+        <span>Scroll</span>
+        <div class="w-px h-10 bg-white/10 relative overflow-hidden rounded"><div class="w-full h-3 bg-accent absolute top-0 rounded" style="animation:scrollD 2s ease-in-out infinite"></div></div>
+    </div>
+    <style>@keyframes scrollD{0%{top:-12px}100%{top:40px}}</style>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="py-24 md:py-32 bg-white relative overflow-hidden" style="perspective:1200px">
+    <div class="deco-circle" style="width:500px;height:500px;top:-200px;right:-200px"></div>
+    <div class="deco-circle" style="width:300px;height:300px;bottom:-100px;left:-100px;border-color:rgba(240,165,0,.05)"></div>
+    <!-- 3D Ring -->
+    <div class="shape-3d hidden lg:block" style="top:30%;right:5%"><div class="ring-3d" style="width:120px;height:120px;border-color:rgba(240,165,0,.06);animation-duration:20s"></div></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div class="rv-l relative">
+                <div class="relative rounded-2xl overflow-hidden" style="box-shadow:0 30px 80px rgba(10,22,40,.18),0 0 0 1px rgba(0,198,240,.08)">
+                    <img src="https://z-cdn-media.chatglm.cn/files/b475507e-3d87-4e81-b32b-6a6b0dfa15f8.jpg?auth_key=1887038038-8990a9b343f34495af7bfa20729b70d8-0-ac5f58619cd76a1ef67cb873a4b6ddb3" alt="Dasha Auto Refrigeration D-Cool truck" class="w-full h-[380px] md:h-[480px] object-cover" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/50 via-transparent to-transparent"></div>
+                </div>
+                <div class="absolute -bottom-6 -right-4 md:-right-8 rounded-2xl p-6 stat-float" style="background:linear-gradient(135deg,#0A1628,#0F2240);box-shadow:0 25px 60px rgba(10,22,40,.5),0 0 0 1px rgba(0,198,240,.15)">
+                    <div class="text-4xl font-extrabold text-accent ctr" data-target="15">0</div>
+                    <div class="text-xs text-white/50 mt-1 font-semibold tracking-wider uppercase">Years of<br>Experience</div>
+                </div>
+                <div class="absolute -top-4 -left-4 w-16 h-16 border-t-2 border-l-2 border-accent/25 rounded-tl-xl -z-10"></div>
+                <div class="absolute -bottom-4 -left-4 w-16 h-16 border-b-2 border-l-2 border-accent/25 rounded-bl-xl -z-10"></div>
+            </div>
+            <div class="rv-r">
+                <div class="section-tag mb-6">About Us</div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight" style="font-family:'Playfair Display',serif">About Dasha Auto<br>Refrigeration</h2>
+                <div class="section-line mt-6 mb-6"></div>
+                <p class="text-gray-500 leading-relaxed">Dasha Auto Refrigeration is an experienced automotive refrigeration and air-conditioning solutions provider with over 15 years of industry expertise. We specialize in delivering reliable, high-quality refrigeration and A/C systems for commercial vehicles across India.</p>
+                <p class="text-gray-500 leading-relaxed mt-4">From truck refrigeration units to bus A/C systems, cabin air-conditioning to container solutions — our comprehensive range of products and services is designed to meet the demanding requirements of temperature-sensitive transportation and commercial vehicle comfort.</p>
+                <p class="text-gray-500 leading-relaxed mt-4">Our commitment to quality, reliability, and customer satisfaction has made us a trusted partner for businesses in cold-chain logistics, commercial transportation, and vehicle climate control.</p>
+                <div class="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-gray-100">
+                    <div class="text-center md:text-left"><div class="text-3xl md:text-4xl font-extrabold text-primary ctr" data-target="15">0</div><div class="text-xs text-gray-400 mt-1.5 font-bold uppercase tracking-wider">Years</div></div>
+                    <div class="text-center md:text-left"><div class="text-3xl md:text-4xl font-extrabold text-primary ctr" data-target="750">0</div><div class="text-xs text-gray-400 mt-1.5 font-bold uppercase tracking-wider">Containers</div></div>
+                    <div class="text-center md:text-left"><div class="text-3xl md:text-4xl font-extrabold text-primary ctr" data-target="1200">0</div><div class="text-xs text-gray-400 mt-1.5 font-bold uppercase tracking-wider">A/C Units</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="py-24 md:py-32 relative overflow-hidden" style="background:linear-gradient(180deg,#F8FAFC,#F1F5F9);perspective:1200px">
+    <div class="wave-div" style="transform:rotate(180deg)"><svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C200,80 400,0 600,40 C800,80 1000,0 1200,40 L1200,80 L0,80Z" fill="#fff"/></svg></div>
+    <div class="shape-3d hidden lg:block" style="bottom:15%;right:8%"><div class="cube-3d" style="animation-duration:30s"><div class="cube-face f"></div><div class="cube-face bk"></div><div class="cube-face l"></div><div class="cube-face r"></div><div class="cube-face t"></div><div class="cube-face bt"></div></div></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center max-w-2xl mx-auto rv">
+            <div class="section-tag mx-auto mb-5">What We Do</div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary" style="font-family:'Playfair Display',serif">Our Services</h2>
+            <div class="section-line mx-auto mt-6 mb-6"></div>
+            <p class="text-gray-500 leading-relaxed">Comprehensive automotive refrigeration and air-conditioning solutions for commercial vehicles.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7 mt-16">
+            <div class="service-card tilt-3d rv d1"><div class="glare-layer rounded-[20px]"></div>
+                <div class="h-52 overflow-hidden relative">
+                    <img src="https://picsum.photos/seed/truckref3d/600/450.jpg" alt="Truck Refrigeration Unit" class="s-img w-full h-full object-cover" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+                </div>
+                <div class="p-6" style="transform-style:preserve-3d">
+                    <div class="s-icon-wrap mb-4"><span class="iconify text-accent" data-icon="lucide:truck" data-width="24"></span></div>
+                    <h3 class="text-lg font-bold text-primary" style="transform:translateZ(20px)">Truck Refrigeration Unit</h3>
+                    <p class="text-gray-500 text-sm mt-2.5 leading-relaxed" style="transform:translateZ(15px)">Professional refrigeration solutions for trucks transporting temperature-sensitive goods.</p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-accent-dark text-sm font-semibold mt-4 group" style="transform:translateZ(25px)">Enquire Now <span class="iconify transition-transform group-hover:translate-x-1.5" data-icon="lucide:arrow-right" data-width="14"></span></a>
+                </div>
+            </div>
+            <div class="service-card tilt-3d rv d2"><div class="glare-layer rounded-[20px]"></div>
+                <div class="h-52 overflow-hidden relative">
+                    <img src="https://picsum.photos/seed/busac3d2/600/450.jpg" alt="Bus A/C Unit" class="s-img w-full h-full object-cover" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+                </div>
+                <div class="p-6" style="transform-style:preserve-3d">
+                    <div class="s-icon-wrap mb-4"><span class="iconify text-accent" data-icon="lucide:bus" data-width="24"></span></div>
+                    <h3 class="text-lg font-bold text-primary" style="transform:translateZ(20px)">Bus A/C Unit</h3>
+                    <p class="text-gray-500 text-sm mt-2.5 leading-relaxed" style="transform:translateZ(15px)">Reliable and efficient air-conditioning for buses, designed for passenger comfort.</p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-accent-dark text-sm font-semibold mt-4 group" style="transform:translateZ(25px)">Enquire Now <span class="iconify transition-transform group-hover:translate-x-1.5" data-icon="lucide:arrow-right" data-width="14"></span></a>
+                </div>
+            </div>
+            <div class="service-card tilt-3d rv d3"><div class="glare-layer rounded-[20px]"></div>
+                <div class="h-52 overflow-hidden relative">
+                    <img src="https://picsum.photos/seed/cabinac3d/600/450.jpg" alt="Cabin AC" class="s-img w-full h-full object-cover" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+                </div>
+                <div class="p-6" style="transform-style:preserve-3d">
+                    <div class="s-icon-wrap mb-4"><span class="iconify text-accent" data-icon="lucide:wind" data-width="24"></span></div>
+                    <h3 class="text-lg font-bold text-primary" style="transform:translateZ(20px)">Cabin AC</h3>
+                    <p class="text-gray-500 text-sm mt-2.5 leading-relaxed" style="transform:translateZ(15px)">Cabin air-conditioning solutions for commercial and heavy vehicles.</p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-accent-dark text-sm font-semibold mt-4 group" style="transform:translateZ(25px)">Enquire Now <span class="iconify transition-transform group-hover:translate-x-1.5" data-icon="lucide:arrow-right" data-width="14"></span></a>
+                </div>
+            </div>
+            <div class="service-card tilt-3d rv d4"><div class="glare-layer rounded-[20px]"></div>
+                <div class="h-52 overflow-hidden relative">
+                    <img src="https://picsum.photos/seed/container3d/600/450.jpg" alt="Container Solutions" class="s-img w-full h-full object-cover" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+                </div>
+                <div class="p-6" style="transform-style:preserve-3d">
+                    <div class="s-icon-wrap mb-4"><span class="iconify text-accent" data-icon="lucide:box" data-width="24"></span></div>
+                    <h3 class="text-lg font-bold text-primary" style="transform:translateZ(20px)">Container Solutions</h3>
+                    <p class="text-gray-500 text-sm mt-2.5 leading-relaxed" style="transform:translateZ(15px)">Refrigerated and dry container solutions for transportation and storage.</p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-accent-dark text-sm font-semibold mt-4 group" style="transform:translateZ(25px)">Enquire Now <span class="iconify transition-transform group-hover:translate-x-1.5" data-icon="lucide:arrow-right" data-width="14"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wave-div"><svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C200,80 400,0 600,40 C800,80 1000,0 1200,40 L1200,80 L0,80Z" fill="#fff"/></svg></div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<section id="products" class="py-24 md:py-32 bg-white relative overflow-hidden" style="perspective:1200px">
+    <div class="deco-circle" style="width:600px;height:600px;bottom:-300px;right:-200px;border-color:rgba(0,198,240,.04)"></div>
+    <div class="shape-3d hidden lg:block" style="top:10%;left:5%"><div class="octa-3d" style="animation-duration:25s"><div class="octa-face" style="transform:translateZ(20px)"></div><div class="octa-face" style="transform:rotateY(90deg) translateZ(20px)"></div><div class="octa-face" style="transform:rotateY(180deg) translateZ(20px)"></div><div class="octa-face" style="transform:rotateY(270deg) translateZ(20px)"></div></div></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center max-w-2xl mx-auto rv">
+            <div class="section-tag mx-auto mb-5">Our Products</div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary" style="font-family:'Playfair Display',serif">Premium Products</h2>
+            <div class="section-line mx-auto mt-6 mb-6"></div>
+            <p class="text-gray-500 leading-relaxed">Built for commercial vehicle applications with reliability and performance.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-8 mt-16">
+            <div class="product-card tilt-3d rv d1"><div class="glare-layer rounded-[20px]"></div>
+                <div class="h-60 overflow-hidden relative">
+                    <img src="https://z-cdn-media.chatglm.cn/files/cc40d955-9cde-4a55-87c3-e558c6e85bfd.jpg?auth_key=1887038038-353475c271fd47538d01351a049584c8-0-658fbea81f31dedccb536e8b812ad5fa" alt="Truck Refrigeration Unit D-Cool" class="p-img w-full h-full object-cover" loading="lazy">
+                    <div class="p-badge">Featured</div>
+                </div>
+                <div class="p-7" style="transform-style:preserve-3d">
+                    <h3 class="text-xl font-bold text-primary" style="transform:translateZ(15px)">Truck Refrigeration Unit – D-Cool</h3>
+                    <p class="text-gray-500 text-sm mt-3 leading-relaxed" style="transform:translateZ(10px)">Advanced truck-mounted refrigeration for reliable temperature-controlled transportation.</p>
+                    <div class="flex items-center gap-2 mt-4 px-3 py-2.5 bg-gray-50 rounded-xl" style="transform:translateZ(12px)"><span class="iconify text-accent" data-icon="lucide:tag" data-width="13"></span><span class="text-xs text-gray-400 font-medium">Temperature-Sensitive Cargo</span></div>
+                    <div class="flex gap-3 mt-6" style="transform:translateZ(20px)">
+                        <a href="#contact" class="btn-accent flex-1 text-center px-5 py-3 rounded-xl text-xs font-bold tracking-wide uppercase"><span>Get Enquiry</span></a>
+                        <a href="https://wa.me/919443555613?text=Hi%2C%20interested%20in%20D-Cool" target="_blank" rel="noopener" class="btn-wa px-4 py-3 rounded-xl flex items-center justify-center" aria-label="WhatsApp"><span class="iconify" data-icon="mdi:whatsapp" data-width="20"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card tilt-3d rv d2"><div class="glare-layer rounded-[20px]"></div>
+                <div class="h-60 overflow-hidden relative"><img src="https://picsum.photos/seed/milkcont3d/600/450.jpg" alt="Milk Container" class="p-img w-full h-full object-cover" loading="lazy"></div>
+                <div class="p-7" style="transform-style:preserve-3d">
+                    <h3 class="text-xl font-bold text-primary" style="transform:translateZ(15px)">Milk Container</h3>
+                    <p class="text-gray-500 text-sm mt-3 leading-relaxed" style="transform:translateZ(10px)">Refrigerated container for safe and hygienic transportation of milk and dairy products.</p>
+                    <div class="flex items-center gap-2 mt-4 px-3 py-2.5 bg-gray-50 rounded-xl" style="transform:translateZ(12px)"><span class="iconify text-accent" data-icon="lucide:tag" data-width="13"></span><span class="text-xs text-gray-400 font-medium">Dairy Transportation</span></div>
+                    <div class="flex gap-3 mt-6" style="transform:translateZ(20px)">
+                        <a href="#contact" class="btn-accent flex-1 text-center px-5 py-3 rounded-xl text-xs font-bold tracking-wide uppercase"><span>Get Enquiry</span></a>
+                        <a href="https://wa.me/919443555613?text=Hi%2C%20interested%20in%20Milk%20Container" target="_blank" rel="noopener" class="btn-wa px-4 py-3 rounded-xl flex items-center justify-center" aria-label="WhatsApp"><span class="iconify" data-icon="mdi:whatsapp" data-width="20"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card tilt-3d rv d3"><div class="glare-layer rounded-[20px]"></div>
+                <div class="h-60 overflow-hidden relative"><img src="https://picsum.photos/seed/fishcont3d/600/450.jpg" alt="Fish Container" class="p-img w-full h-full object-cover" loading="lazy"></div>
+                <div class="p-7" style="transform-style:preserve-3d">
+                    <h3 class="text-xl font-bold text-primary" style="transform:translateZ(15px)">Fish Container</h3>
+                    <p class="text-gray-500 text-sm mt-3 leading-relaxed" style="transform:translateZ(10px)">Specialized refrigerated container for fish and seafood transportation.</p>
+                    <div class="flex items-center gap-2 mt-4 px-3 py-2.5 bg-gray-50 rounded-xl" style="transform:translateZ(12px)"><span class="iconify text-accent" data-icon="lucide:tag" data-width="13"></span><span class="text-xs text-gray-400 font-medium">Seafood Transportation</span></div>
+                    <div class="flex gap-3 mt-6" style="transform:translateZ(20px)">
+                        <a href="#contact" class="btn-accent flex-1 text-center px-5 py-3 rounded-xl text-xs font-bold tracking-wide uppercase"><span>Get Enquiry</span></a>
+                        <a href="https://wa.me/919443555613?text=Hi%2C%20interested%20in%20Fish%20Container" target="_blank" rel="noopener" class="btn-wa px-4 py-3 rounded-xl flex items-center justify-center" aria-label="WhatsApp"><span class="iconify" data-icon="mdi:whatsapp" data-width="20"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card tilt-3d rv d1"><div class="glare-layer rounded-[20px]"></div>
+                <div class="h-60 overflow-hidden relative"><img src="https://picsum.photos/seed/drycont3d/600/450.jpg" alt="Dry Container DVC" class="p-img w-full h-full object-cover" loading="lazy"></div>
+                <div class="p-7" style="transform-style:preserve-3d">
+                    <h3 class="text-xl font-bold text-primary" style="transform:translateZ(15px)">Dry Container – DVC</h3>
+                    <p class="text-gray-500 text-sm mt-3 leading-relaxed" style="transform:translateZ(10px)">Durable dry container for general cargo transportation and storage.</p>
+                    <div class="flex items-center gap-2 mt-4 px-3 py-2.5 bg-gray-50 rounded-xl" style="transform:translateZ(12px)"><span class="iconify text-accent" data-icon="lucide:tag" data-width="13"></span><span class="text-xs text-gray-400 font-medium">General Cargo</span></div>
+                    <div class="flex gap-3 mt-6" style="transform:translateZ(20px)">
+                        <a href="#contact" class="btn-accent flex-1 text-center px-5 py-3 rounded-xl text-xs font-bold tracking-wide uppercase"><span>Get Enquiry</span></a>
+                        <a href="https://wa.me/919443555613?text=Hi%2C%20interested%20in%20Dry%20Container" target="_blank" rel="noopener" class="btn-wa px-4 py-3 rounded-xl flex items-center justify-center" aria-label="WhatsApp"><span class="iconify" data-icon="mdi:whatsapp" data-width="20"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card tilt-3d rv d2 sm:col-span-2 lg:col-span-2"><div class="glare-layer rounded-[20px]"></div>
+                <div class="grid sm:grid-cols-2 h-full">
+                    <div class="h-60 sm:h-full overflow-hidden relative"><img src="https://picsum.photos/seed/cabinac3d2/600/450.jpg" alt="Cabin AC Electrical & Engine Drive" class="p-img w-full h-full object-cover" loading="lazy"></div>
+                    <div class="p-7 sm:p-9 flex flex-col justify-center" style="transform-style:preserve-3d">
+                        <div class="section-tag self-start mb-4">Versatile</div>
+                        <h3 class="text-2xl font-bold text-primary" style="transform:translateZ(15px)">Cabin AC – Electrical & Vehicle Engine Drive</h3>
+                        <p class="text-gray-500 text-sm mt-4 leading-relaxed" style="transform:translateZ(10px)">Versatile cabin air-conditioning available in both electrical and vehicle engine drive options.</p>
+                        <div class="flex items-center gap-2 mt-5 px-3 py-2.5 bg-gray-50 rounded-xl w-fit" style="transform:translateZ(12px)"><span class="iconify text-accent" data-icon="lucide:tag" data-width="13"></span><span class="text-xs text-gray-400 font-medium">Commercial & Heavy Vehicle Cabins</span></div>
+                        <div class="flex gap-3 mt-7" style="transform:translateZ(20px)">
+                            <a href="#contact" class="btn-accent px-7 py-3 rounded-xl text-xs font-bold tracking-wide uppercase"><span>Get Enquiry</span></a>
+                            <a href="https://wa.me/919443555613?text=Hi%2C%20interested%20in%20Cabin%20AC" target="_blank" rel="noopener" class="btn-wa px-5 py-3 rounded-xl text-sm font-bold flex items-center gap-2"><span class="iconify" data-icon="mdi:whatsapp" data-width="20"></span>WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section id="why-choose" class="py-24 md:py-32 relative overflow-hidden" style="background:linear-gradient(160deg,#060E1A,#0A1628 30%,#0F2240 70%,#163358);perspective:1200px">
+    <div class="absolute inset-0 opacity-[.02]" style="background-image:url('data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M20 20.5V18H0v-2h20v-2l2 3.25L20 20.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20z\' fill=\'%23ffffff\' fill-opacity=\'1\' fill-rule=\'evenodd\'/%3E%3C/svg%3E')"></div>
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full -translate-y-1/2 translate-x-1/3 blur-[120px]"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold/3 rounded-full translate-y-1/2 -translate-x-1/3 blur-[120px]"></div>
+    <!-- 3D Shapes -->
+    <div class="shape-3d hidden lg:block" style="top:15%;left:5%"><div class="cube-3d" style="animation-duration:35s"><div class="cube-face f"></div><div class="cube-face bk"></div><div class="cube-face l"></div><div class="cube-face r"></div><div class="cube-face t"></div><div class="cube-face bt"></div></div></div>
+    <div class="shape-3d hidden lg:block" style="bottom:20%;right:8%"><div class="ring-3d" style="width:100px;height:100px;border-color:rgba(240,165,0,.06);animation-duration:18s"></div></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center max-w-2xl mx-auto rv">
+            <div class="section-tag mx-auto mb-5" style="color:#00C6F0;background:rgba(0,198,240,.1);border-color:rgba(0,198,240,.2)">Why Choose Us</div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white" style="font-family:'Playfair Display',serif">Why Choose <span class="text-accent">Dasha?</span></h2>
+            <div class="section-line mx-auto mt-6 mb-6"></div>
+            <p class="text-white/45 leading-relaxed">What sets us apart in automotive refrigeration and A/C solutions.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mt-16">
+            <div class="why-card tilt-3d rv d1"><div class="glare-layer rounded-[18px]"></div>
+                <div class="w-icon mb-5"><span class="iconify text-accent" data-icon="lucide:award" data-width="26"></span></div>
+                <h3 class="text-white font-bold text-lg" style="transform:translateZ(15px)">15+ Years of Experience</h3>
+                <p class="text-white/35 text-sm mt-2.5 leading-relaxed" style="transform:translateZ(10px)">Over a decade and a half of expertise in automotive refrigeration and A/C.</p>
+            </div>
+            <div class="why-card tilt-3d rv d2"><div class="glare-layer rounded-[18px]"></div>
+                <div class="w-icon mb-5"><span class="iconify text-accent" data-icon="lucide:shield-check" data-width="26"></span></div>
+                <h3 class="text-white font-bold text-lg" style="transform:translateZ(15px)">Reliable Solutions</h3>
+                <p class="text-white/35 text-sm mt-2.5 leading-relaxed" style="transform:translateZ(10px)">Products and services businesses can depend on for consistent performance.</p>
+            </div>
+            <div class="why-card tilt-3d rv d3"><div class="glare-layer rounded-[18px]"></div>
+                <div class="w-icon mb-5"><span class="iconify text-accent" data-icon="lucide:badge-check" data-width="26"></span></div>
+                <h3 class="text-white font-bold text-lg" style="transform:translateZ(15px)">Quality Products</h3>
+                <p class="text-white/35 text-sm mt-2.5 leading-relaxed" style="transform:translateZ(10px)">Built to meet the demanding needs of commercial refrigeration.</p>
+            </div>
+            <div class="why-card tilt-3d rv d4"><div class="glare-layer rounded-[18px]"></div>
+                <div class="w-icon mb-5"><span class="iconify text-accent" data-icon="lucide:truck" data-width="26"></span></div>
+                <h3 class="text-white font-bold text-lg" style="transform:translateZ(15px)">Commercial Vehicle Expertise</h3>
+                <p class="text-white/35 text-sm mt-2.5 leading-relaxed" style="transform:translateZ(10px)">Specialized knowledge for trucks, buses and heavy vehicles.</p>
+            </div>
+            <div class="why-card tilt-3d rv d5"><div class="glare-layer rounded-[18px]"></div>
+                <div class="w-icon mb-5"><span class="iconify text-accent" data-icon="lucide:heart-handshake" data-width="26"></span></div>
+                <h3 class="text-white font-bold text-lg" style="transform:translateZ(15px)">Customer-Focused Service</h3>
+                <p class="text-white/35 text-sm mt-2.5 leading-relaxed" style="transform:translateZ(10px)">We prioritize customer needs with attentive support throughout.</p>
+            </div>
+            <div class="why-card tilt-3d rv d6"><div class="glare-layer rounded-[18px]"></div>
+                <div class="w-icon mb-5"><span class="iconify text-accent" data-icon="lucide:settings" data-width="26"></span></div>
+                <h3 class="text-white font-bold text-lg" style="transform:translateZ(15px)">Complete Solutions</h3>
+                <p class="text-white/35 text-sm mt-2.5 leading-relaxed" style="transform:translateZ(10px)">End-to-end refrigeration and A/C from products to support.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SOLUTIONS ===== -->
+<section id="solutions" class="py-24 md:py-32 bg-white relative overflow-hidden" style="perspective:1200px">
+    <div class="deco-dot" style="top:15%;left:10%"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center max-w-2xl mx-auto rv">
+            <div class="section-tag mx-auto mb-5">Applications</div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary" style="font-family:'Playfair Display',serif">Solutions & Applications</h2>
+            <div class="section-line mx-auto mt-6 mb-6"></div>
+            <p class="text-gray-500 leading-relaxed">Where our products make a difference across industries.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-16">
+            <div class="sol-item aspect-[4/3] rv-s d1"><img src="https://picsum.photos/seed/milktr3d/500/375.jpg" alt="Milk Transportation" loading="lazy"><div class="sol-grad flex items-end p-5"><span class="text-white font-semibold text-sm">Milk Transportation</span></div></div>
+            <div class="sol-item aspect-[4/3] rv-s d2"><img src="https://picsum.photos/seed/fishtr3d/500/375.jpg" alt="Fish Transportation" loading="lazy"><div class="sol-grad flex items-end p-5"><span class="text-white font-semibold text-sm">Fish Transportation</span></div></div>
+            <div class="sol-item aspect-[4/3] rv-s d3"><img src="https://picsum.photos/seed/tempc3d/500/375.jpg" alt="Temperature-Sensitive Cargo" loading="lazy"><div class="sol-grad flex items-end p-5"><span class="text-white font-semibold text-sm">Temp-Sensitive Cargo</span></div></div>
+            <div class="sol-item aspect-[4/3] rv-s d4"><img src="https://picsum.photos/seed/comtr3d/500/375.jpg" alt="Commercial Trucks" loading="lazy"><div class="sol-grad flex items-end p-5"><span class="text-white font-semibold text-sm">Commercial Trucks</span></div></div>
+            <div class="sol-item aspect-[4/3] rv-s d1"><img src="https://picsum.photos/seed/bus3d/500/375.jpg" alt="Buses" loading="lazy"><div class="sol-grad flex items-end p-5"><span class="text-white font-semibold text-sm">Buses</span></div></div>
+            <div class="sol-item aspect-[4/3] rv-s d2"><img src="https://picsum.photos/seed/cabinv3d/500/375.jpg" alt="Vehicle Cabins" loading="lazy"><div class="sol-grad flex items-end p-5"><span class="text-white font-semibold text-sm">Vehicle Cabins</span></div></div>
+            <div class="sol-item aspect-[4/3] rv-s d3"><img src="https://picsum.photos/seed/refc3d/500/375.jpg" alt="Refrigerated Containers" loading="lazy"><div class="sol-grad flex items-end p-5"><span class="text-white font-semibold text-sm">Refrigerated Containers</span></div></div>
+            <div class="sol-item aspect-[4/3] rv-s d4"><img src="https://picsum.photos/seed/dryc3d/500/375.jpg" alt="Dry Cargo Containers" loading="lazy"><div class="sol-grad flex items-end p-5"><span class="text-white font-semibold text-sm">Dry Cargo Containers</span></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery" class="py-24 md:py-32 relative overflow-hidden" style="background:linear-gradient(180deg,#F8FAFC,#F1F5F9);perspective:1200px">
+    <div class="wave-div" style="transform:rotate(180deg)"><svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C200,80 400,0 600,40 C800,80 1000,0 1200,40 L1200,80 L0,80Z" fill="#fff"/></svg></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center max-w-2xl mx-auto rv">
+            <div class="section-tag mx-auto mb-5">Gallery</div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary" style="font-family:'Playfair Display',serif">Our Work</h2>
+            <div class="section-line mx-auto mt-6 mb-6"></div>
+            <p class="text-gray-500 leading-relaxed">Products, installations and work in the field.</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-2 mt-10 rv">
+            <button class="gal-filter-btn active" data-filter="all">All</button>
+            <button class="gal-filter-btn" data-filter="truck">Truck</button>
+            <button class="gal-filter-btn" data-filter="container">Containers</button>
+            <button class="gal-filter-btn" data-filter="cabin">Cabin AC</button>
+            <button class="gal-filter-btn" data-filter="bus">Bus AC</button>
+            <button class="gal-filter-btn" data-filter="service">Service</button>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 mt-10" id="galleryGrid">
+            <div class="gal-item aspect-square rv-s d1" data-category="truck"><img src="https://z-cdn-media.chatglm.cn/files/b475507e-3d87-4e81-b32b-6a6b0dfa15f8.jpg?auth_key=1887038038-8990a9b343f34495af7bfa20729b70d8-0-ac5f58619cd76a1ef67cb873a4b6ddb3" alt="D-Cool Truck Side" loading="lazy"><div class="gal-over"><span class="iconify text-white" data-icon="lucide:zoom-in" data-width="28"></span><span class="text-white text-xs font-semibold mt-1">View</span></div></div>
+            <div class="gal-item aspect-square rv-s d2" data-category="truck"><img src="https://z-cdn-media.chatglm.cn/files/cc40d955-9cde-4a55-87c3-e558c6e85bfd.jpg?auth_key=1887038038-353475c271fd47538d01351a049584c8-0-658fbea81f31dedccb536e8b812ad5fa" alt="D-Cool Truck Front" loading="lazy"><div class="gal-over"><span class="iconify text-white" data-icon="lucide:zoom-in" data-width="28"></span><span class="text-white text-xs font-semibold mt-1">View</span></div></div>
+            <div class="gal-item aspect-square rv-s d3" data-category="container"><img src="https://picsum.photos/seed/gc11/500/500.jpg" alt="Container" loading="lazy"><div class="gal-over"><span class="iconify text-white" data-icon="lucide:zoom-in" data-width="28"></span><span class="text-white text-xs font-semibold mt-1">View</span></div></div>
+            <div class="gal-item aspect-square rv-s d4" data-category="cabin"><img src="https://picsum.photos/seed/gc12/500/500.jpg" alt="Cabin AC" loading="lazy"><div class="gal-over"><span class="iconify text-white" data-icon="lucide:zoom-in" data-width="28"></span><span class="text-white text-xs font-semibold mt-1">View</span></div></div>
+            <div class="gal-item aspect-square rv-s d1" data-category="bus"><img src="https://picsum.photos/seed/gc13/500/500.jpg" alt="Bus AC" loading="lazy"><div class="gal-over"><span class="iconify text-white" data-icon="lucide:zoom-in" data-width="28"></span><span class="text-white text-xs font-semibold mt-1">View</span></div></div>
+            <div class="gal-item aspect-square rv-s d2" data-category="service"><img src="https://picsum.photos/seed/gc14/500/500.jpg" alt="Installation" loading="lazy"><div class="gal-over"><span class="iconify text-white" data-icon="lucide:zoom-in" data-width="28"></span><span class="text-white text-xs font-semibold mt-1">View</span></div></div>
+            <div class="gal-item aspect-square rv-s d3" data-category="container"><img src="https://picsum.photos/seed/gc15/500/500.jpg" alt="Dry Container" loading="lazy"><div class="gal-over"><span class="iconify text-white" data-icon="lucide:zoom-in" data-width="28"></span><span class="text-white text-xs font-semibold mt-1">View</span></div></div>
+            <div class="gal-item aspect-square rv-s d4" data-category="truck"><img src="https://picsum.photos/seed/gc16/500/500.jpg" alt="Truck Setup" loading="lazy"><div class="gal-over"><span class="iconify text-white" data-icon="lucide:zoom-in" data-width="28"></span><span class="text-white text-xs font-semibold mt-1">View</span></div></div>
+            <div class="gal-item aspect-square rv-s d1" data-category="cabin"><img src="https://picsum.photos/seed/gc17/500/500.jpg" alt="Cabin Unit" loading="lazy"><div class="gal-over"><span class="iconify text-white" data-icon="lucide:zoom-in" data-width="28"></span><span class="text-white text-xs font-semibold mt-1">View</span></div></div>
+            <div class="gal-item aspect-square rv-s d2" data-category="service"><img src="https://picsum.photos/seed/gc18/500/500.jpg" alt="Service" loading="lazy"><div class="gal-over"><span class="iconify text-white" data-icon="lucide:zoom-in" data-width="28"></span><span class="text-white text-xs font-semibold mt-1">View</span></div></div>
+            <div class="gal-item aspect-square rv-s d3" data-category="bus"><img src="https://picsum.photos/seed/gc19/500/500.jpg" alt="Bus Ducting" loading="lazy"><div class="gal-over"><span class="iconify text-white" data-icon="lucide:zoom-in" data-width="28"></span><span class="text-white text-xs font-semibold mt-1">View</span></div></div>
+            <div class="gal-item aspect-square rv-s d4" data-category="container"><img src="https://picsum.photos/seed/gc20/500/500.jpg" alt="Container Unit" loading="lazy"><div class="gal-over"><span class="iconify text-white" data-icon="lucide:zoom-in" data-width="28"></span><span class="text-white text-xs font-semibold mt-1">View</span></div></div>
+        </div>
+    </div>
+    <div class="wave-div"><svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C200,80 400,0 600,40 C800,80 1000,0 1200,40 L1200,80 L0,80Z" fill="#fff"/></svg></div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-bg py-24 md:py-32 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 rv">
+        <div class="inline-flex items-center gap-3 text-accent/50 text-xs font-bold tracking-[.2em] uppercase mb-6"><span class="w-8 h-px bg-accent/20"></span>Get In Touch<span class="w-8 h-px bg-accent/20"></span></div>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight" style="font-family:'Playfair Display',serif">Looking for Reliable<br>Refrigeration & A/C Solutions?</h2>
+        <p class="text-white/45 mt-5 text-lg leading-relaxed max-w-2xl mx-auto font-light">Talk to Dasha Auto Refrigeration for your commercial vehicle and container requirements.</p>
+        <div class="flex flex-wrap justify-center gap-4 mt-10">
+            <a href="tel:+919994155613" class="btn-accent px-9 py-4 rounded-full text-sm font-bold tracking-wide inline-flex items-center gap-3"><span class="iconify" data-icon="lucide:phone" data-width="18"></span><span>Call Now</span></a>
+            <a href="https://wa.me/919443555613?text=Hi%2C%20interested%20in%20refrigeration%20solutions" target="_blank" rel="noopener" class="btn-wa px-9 py-4 rounded-full text-sm font-bold tracking-wide inline-flex items-center gap-3"><span class="iconify" data-icon="mdi:whatsapp" data-width="22"></span><span>WhatsApp Us</span></a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="py-24 md:py-32 bg-white relative overflow-hidden" style="perspective:1200px">
+    <div class="deco-circle" style="width:400px;height:400px;top:-150px;left:-150px;border-color:rgba(0,198,240,.05)"></div>
+    <div class="shape-3d hidden lg:block" style="bottom:10%;right:5%"><div class="ring-3d" style="width:90px;height:90px;border-color:rgba(0,198,240,.06);animation-duration:22s"></div></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center max-w-2xl mx-auto rv">
+            <div class="section-tag mx-auto mb-5">Contact</div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary" style="font-family:'Playfair Display',serif">Get In Touch</h2>
+            <div class="section-line mx-auto mt-6 mb-6"></div>
+            <p class="text-gray-500 leading-relaxed">Enquiries, quotes or questions about our products and services.</p>
+        </div>
+        <div class="grid lg:grid-cols-5 gap-10 lg:gap-14 mt-16">
+            <div class="lg:col-span-2 rv-l space-y-4">
+                <a href="tel:+919994155613" class="contact-card tilt-3d flex items-start gap-4 group p-5 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:border-accent/20"><div class="glare-layer rounded-2xl"></div><div class="cc-icon w-14 h-14 rounded-xl bg-accent/10 text-accent flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white group-hover:shadow-xl group-hover:shadow-accent/30 transition-all duration-400"><span class="iconify" data-icon="lucide:phone" data-width="22"></span></div><div><div class="text-[10px] text-gray-400 font-bold uppercase tracking-[.15em]">Phone</div><div class="text-primary font-bold text-lg mt-1">99941 55613</div></div></a>
+                <a href="https://wa.me/919443555613" target="_blank" rel="noopener" class="contact-card tilt-3d flex items-start gap-4 group p-5 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:border-green-200"><div class="glare-layer rounded-2xl"></div><div class="cc-icon w-14 h-14 rounded-xl bg-green-50 text-green-600 flex items-center justify-center shrink-0 group-hover:bg-green-600 group-hover:text-white group-hover:shadow-xl group-hover:shadow-green-500/30 transition-all duration-400"><span class="iconify" data-icon="mdi:whatsapp" data-width="24"></span></div><div><div class="text-[10px] text-gray-400 font-bold uppercase tracking-[.15em]">WhatsApp</div><div class="text-primary font-bold text-lg mt-1">94435 55613</div></div></a>
+                <a href="mailto:dashaautorefrigeration@gmail.com" class="contact-card tilt-3d flex items-start gap-4 group p-5 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:border-accent/20"><div class="glare-layer rounded-2xl"></div><div class="cc-icon w-14 h-14 rounded-xl bg-accent/10 text-accent flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white group-hover:shadow-xl group-hover:shadow-accent/30 transition-all duration-400"><span class="iconify" data-icon="lucide:mail" data-width="22"></span></div><div><div class="text-[10px] text-gray-400 font-bold uppercase tracking-[.15em]">Email</div><div class="text-primary font-bold text-sm mt-1.5 break-all">dashaautorefrigeration@gmail.com</div></div></a>
+                <div class="mt-6 rounded-2xl overflow-hidden border border-gray-100 h-48 flex items-center justify-center" style="background:linear-gradient(135deg,#F8FAFC,#F1F5F9)"><div class="text-center"><div class="w-14 h-14 rounded-full bg-accent/10 text-accent flex items-center justify-center mx-auto mb-3"><span class="iconify" data-icon="lucide:map-pin" data-width="24"></span></div><p class="text-sm font-semibold text-gray-400">Location Map</p></div></div>
+            </div>
+            <div class="lg:col-span-3 rv-r">
+                <form id="enquiryForm" class="rounded-2xl p-7 md:p-10 border border-gray-100" style="background:linear-gradient(135deg,#fff,#FAFBFD);box-shadow:0 15px 60px rgba(10,22,40,.05)">
+                    <h3 class="text-2xl font-bold text-primary mb-8" style="font-family:'Playfair Display',serif">Submit an Enquiry</h3>
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div class="form-field"><input type="text" name="name" required placeholder=" "><label>Your Name *</label></div>
+                        <div class="form-field"><input type="tel" name="phone" required placeholder=" "><label>Phone Number *</label></div>
+                    </div>
+                    <div class="form-field mt-5"><input type="email" name="email" placeholder=" "><label>Email Address</label></div>
+                    <div class="form-field mt-5"><select name="service"><option value="">Select a service or product</option><option>Truck Refrigeration Unit</option><option>Bus A/C Unit</option><option>Cabin AC</option><option>Container Solutions</option><option>Truck Refrigeration Unit – D-Cool</option><option>Milk Container</option><option>Fish Container</option><option>Dry Container – DVC</option><option>Cabin AC – Electrical & Vehicle Engine Drive</option><option>Other</option></select><label>Service / Product</label></div>
+                    <div class="form-field mt-5"><textarea name="message" rows="4" placeholder=" " style="resize:none"></textarea><label>Message</label></div>
+                    <button type="submit" class="btn-accent w-full py-4 rounded-xl text-sm font-bold tracking-wide uppercase mt-8 flex items-center justify-center gap-2.5"><span>Submit Enquiry</span><span class="iconify" data-icon="lucide:send" data-width="16"></span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer style="background:linear-gradient(180deg,#060E1A,#0A1628)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+            <div class="sm:col-span-2 lg:col-span-1">
+                <a href="#home" class="flex items-center gap-2.5 mb-5"><img src="https://z-cdn-media.chatglm.cn/files/9bd35295-f8c9-4411-8bb1-ea918da52af4.jpg?auth_key=1887038038-f1be63456f864fcabd0bd3c40af07791-0-4857fc21f4c352f9bb146505bd783e65" alt="Dasha" style="height:44px;width:auto;filter:brightness(1.15)"><div><span class="font-bold text-sm" style="font-family:'Playfair Display',serif">DASHA</span><span class="block text-[9px] text-accent tracking-[.2em] uppercase font-semibold -mt-0.5">Auto Refrigeration</span></div></a>
+                <p class="text-white/35 text-sm leading-relaxed">Experienced automotive refrigeration and A/C solutions provider serving commercial vehicles.</p>
+            </div>
+            <div><h4 class="font-bold text-xs uppercase tracking-[.15em] text-white/60 mb-6">Quick Links</h4><ul class="space-y-3"><li><a href="#home" class="text-white/35 hover:text-accent text-sm transition-colors">Home</a></li><li><a href="#about" class="text-white/35 hover:text-accent text-sm transition-colors">About Us</a></li><li><a href="#services" class="text-white/35 hover:text-accent text-sm transition-colors">Services</a></li><li><a href="#products" class="text-white/35 hover:text-accent text-sm transition-colors">Products</a></li><li><a href="#gallery" class="text-white/35 hover:text-accent text-sm transition-colors">Gallery</a></li><li><a href="#contact" class="text-white/35 hover:text-accent text-sm transition-colors">Contact</a></li></ul></div>
+            <div><h4 class="font-bold text-xs uppercase tracking-[.15em] text-white/60 mb-6">Services</h4><ul class="space-y-3"><li><a href="#services" class="text-white/35 hover:text-accent text-sm transition-colors">Truck Refrigeration</a></li><li><a href="#services" class="text-white/35 hover:text-accent text-sm transition-colors">Bus A/C Unit</a></li><li><a href="#services" class="text-white/35 hover:text-accent text-sm transition-colors">Cabin AC</a></li><li><a href="#services" class="text-white/35 hover:text-accent text-sm transition-colors">Container Solutions</a></li></ul></div>
+            <div><h4 class="font-bold text-xs uppercase tracking-[.15em] text-white/60 mb-6">Contact</h4><ul class="space-y-4"><li class="flex items-start gap-3"><span class="iconify text-accent mt-0.5 shrink-0" data-icon="lucide:phone" data-width="15"></span><a href="tel:+919994155613" class="text-white/35 hover:text-accent text-sm transition-colors">99941 55613</a></li><li class="flex items-start gap-3"><span class="iconify text-green-400 mt-0.5 shrink-0" data-icon="mdi:whatsapp" data-width="16"></span><a href="https://wa.me/919443555613" target="_blank" rel="noopener" class="text-white/35 hover:text-accent text-sm transition-colors">94435 55613</a></li><li class="flex items-start gap-3"><span class="iconify text-accent mt-0.5 shrink-0" data-icon="lucide:mail" data-width="15"></span><a href="mailto:dashaautorefrigeration@gmail.com" class="text-white/35 hover:text-accent text-sm transition-colors break-all">dashaautorefrigeration@gmail.com</a></li></ul></div>
+        </div>
+    </div>
+    <div class="border-t border-white/5"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row justify-between items-center gap-3"><p class="text-white/25 text-xs">&copy; 2026 Dasha Auto Refrigeration. All Rights Reserved.</p><p class="text-white/15 text-xs">Truck Refrigeration &bull; Bus A/C &bull; Cabin AC &bull; Containers</p></div></div>
+</footer>
+
+<!-- MOBILE BAR -->
+<div class="mob-bar fixed bottom-0 left-0 right-0 z-40 md:hidden"><div class="grid grid-cols-3"><a href="tel:+919994155613" class="flex flex-col items-center justify-center py-3 text-primary" aria-label="Call"><span class="iconify" data-icon="lucide:phone" data-width="20"></span><span class="text-[9px] font-bold mt-1 tracking-wide">CALL</span></a><a href="https://wa.me/919443555613?text=Hi%2C%20interested" target="_blank" rel="noopener" class="flex flex-col items-center justify-center py-3 text-green-600" aria-label="WhatsApp"><span class="iconify" data-icon="mdi:whatsapp" data-width="22"></span><span class="text-[9px] font-bold mt-1 tracking-wide">WHATSAPP</span></a><a href="#contact" class="flex flex-col items-center justify-center py-3 text-accent-dark" aria-label="Enquiry"><span class="iconify" data-icon="lucide:mail" data-width="20"></span><span class="text-[9px] font-bold mt-1 tracking-wide">ENQUIRY</span></a></div></div>
+
+<!-- BACK TO TOP -->
+<button class="btt fixed bottom-20 md:bottom-8 right-4 md:right-8 z-30 w-12 h-12 rounded-full text-white flex items-center justify-center" id="backToTop" style="background:linear-gradient(135deg,#00C6F0,#009ECA);box-shadow:0 6px 25px rgba(0,198,240,.45)" aria-label="Top"><span class="iconify" data-icon="lucide:chevron-up" data-width="20"></span></button>
+
+<!-- LIGHTBOX -->
+<div class="lightbox fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center" id="lightbox">
+    <button class="absolute top-5 right-5 text-white/50 hover:text-white transition-colors p-2 z-10" id="lightboxClose" aria-label="Close"><span class="iconify" data-icon="lucide:x" data-width="28"></span></button>
+    <button class="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2 z-10" id="lightboxPrev" aria-label="Prev"><span class="iconify" data-icon="lucide:chevron-left" data-width="36"></span></button>
+    <button class="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2 z-10" id="lightboxNext" aria-label="Next"><span class="iconify" data-icon="lucide:chevron-right" data-width="36"></span></button>
+    <img src="" alt="Gallery" class="lightbox-img max-w-[92vw] max-h-[88vh] object-contain rounded-lg" id="lightboxImg">
+</div>
+
+<!-- TOAST -->
+<div class="toast fixed top-24 right-4 z-50" id="toast"><div class="bg-white rounded-2xl shadow-2xl border border-green-100 p-5 flex items-start gap-3.5 max-w-sm"><div class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0"><span class="iconify" data-icon="lucide:check" data-width="18"></span></div><div><div class="font-bold text-sm text-primary">Enquiry Submitted!</div><div class="text-xs text-gray-500 mt-1">We'll get back to you shortly.</div></div><button class="text-gray-300 hover:text-gray-500 shrink-0 mt-0.5" id="toastClose" aria-label="Close"><span class="iconify" data-icon="lucide:x" data-width="16"></span></button></div></div>
+
+<script>
+(function(){
+'use strict';
+
+// ===== 3D TILT ENGINE =====
+function initTilt(elements, opts={}){
+    const {max=12, scale=1.03, speed=12, glare=true}=opts;
+    const isMobile=window.innerWidth<768;
+    if(isMobile) return;
+    elements.forEach(el=>{
+        let cx=0,cy=0,tx=0,ty=0,raf=null;
+        el.addEventListener('mousemove',e=>{
+            const r=el.getBoundingClientRect();
+            tx=((e.clientY-r.top)/r.height-.5)*-max*2;
+            ty=((e.clientX-r.left)/r.width-.5)*max*2;
+            if(glare){
+                const x=((e.clientX-r.left)/r.width)*100;
+                const y=((e.clientY-r.top)/r.height)*100;
+                const g=el.querySelector('.glare-layer');
+                if(g) g.style.background='radial-gradient(circle at '+x+'% '+y+'%, rgba(255,255,255,0.2), transparent 60%)';
+            }
+            if(!raf) tick();
+        });
+        el.addEventListener('mouseleave',()=>{
+            tx=0;ty=0;
+            const g=el.querySelector('.glare-layer');
+            if(g) g.style.background='transparent';
+            if(!raf) tick();
+        });
+        function tick(){
+            cx+=(tx-cx)/speed; cy+=(ty-cy)/speed;
+            el.style.transform='perspective(800px) rotateX('+cx+'deg) rotateY('+cy+'deg) scale3d('+scale+','+scale+','+scale+')';
+            if(Math.abs(tx-cx)>.01||Math.abs(ty-cy)>.01) raf=requestAnimationFrame(tick);
+            else raf=null;
+        }
+    });
+}
+
+// ===== INIT 3D TILT ON ALL TILT ELEMENTS =====
+function initAllTilts(){
+    initTilt(document.querySelectorAll('.service-card.tilt-3d'),{max:14,scale:1.04,speed:10});
+    initTilt(document.querySelectorAll('.product-card.tilt-3d'),{max:10,scale:1.02,speed:12});
+    initTilt(document.querySelectorAll('.why-card.tilt-3d'),{max:12,scale:1.03,speed:10});
+    initTilt(document.querySelectorAll('.contact-card.tilt-3d'),{max:8,scale:1.02,speed:14});
+}
+initAllTilts();
+window.addEventListener('resize',()=>{initAllTilts()});
+
+// ===== NAVBAR =====
+const nb=document.getElementById('navbar'),btt=document.getElementById('backToTop');
+window.addEventListener('scroll',function(){nb.classList.toggle('scrolled',window.scrollY>60);btt.classList.toggle('vis',window.scrollY>600)},{passive:true});
+btt.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+
+// ===== ACTIVE NAV =====
+const secs=document.querySelectorAll('section[id]'),nls=document.querySelectorAll('.nav-link');
+window.addEventListener('scroll',function(){let c='';secs.forEach(s=>{if(window.scrollY>=s.offsetTop-250)c=s.id});nls.forEach(l=>{l.classList.toggle('active',l.getAttribute('href')==='#'+c)})},{passive:true});
+
+// ===== MOBILE MENU =====
+const mt=document.getElementById('menuToggle'),mc=document.getElementById('menuClose'),mm=document.getElementById('mobileMenu'),mo=document.getElementById('mobileOverlay');
+function openM(){mm.classList.add('open');mo.classList.add('open');document.body.style.overflow='hidden'}
+function closeM(){mm.classList.remove('open');mo.classList.remove('open');document.body.style.overflow=''}
+mt.onclick=openM;mc.onclick=closeM;mo.onclick=closeM;
+document.querySelectorAll('.mob-link').forEach(l=>l.onclick=closeM);
+
+// ===== HERO SLIDER =====
+const sl=document.querySelectorAll('.hero-slide'),dt=document.querySelectorAll('.slider-dot');
+let ci=0,si;
+function goS(n){sl[ci].classList.remove('active');dt[ci].classList.remove('active');ci=(n+sl.length)%sl.length;sl[ci].classList.add('active');dt[ci].classList.add('active')}
+function startS(){si=setInterval(()=>goS(ci+1),6500)}
+function resetS(){clearInterval(si);startS()}
+dt.forEach((d,i)=>d.onclick=()=>{goS(i);resetS()});
+document.getElementById('slidePrev').onclick=()=>{goS(ci-1);resetS()};
+document.getElementById('slideNext').onclick=()=>{goS(ci+1);resetS()};
+startS();
+
+// ===== 3D SCROLL REVEAL =====
+const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:.06,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.rv,.rv-l,.rv-r,.rv-s,.rv-z').forEach(el=>ro.observe(el));
+
+// ===== COUNTERS =====
+const cts=document.querySelectorAll('.ctr');let ca=false;
+const co=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting&&!ca){ca=true;cts.forEach(c=>{const t=+c.dataset.target,s=performance.now();(function u(n){const p=Math.min((n-s)/2200,1),e=1-Math.pow(1-p,4);c.textContent=Math.round(e*t)+'+';if(p<1)requestAnimationFrame(u)})(s)})}}),{threshold:.25});
+const ab=document.getElementById('about');if(ab)co.observe(ab);
+
+// ===== GALLERY FILTER =====
+const fb=document.querySelectorAll('.gal-filter-btn'),gi=document.querySelectorAll('.gal-item');
+fb.forEach(b=>b.onclick=function(){fb.forEach(x=>x.classList.remove('active'));this.classList.add('active');const f=this.dataset.filter;gi.forEach(i=>{const show=f==='all'||i.dataset.category===f;if(show){i.style.display='';i.style.opacity='0';i.style.transform='perspective(800px) scale(.9) translateZ(-20px)';requestAnimationFrame(()=>{i.style.transition='all .5s cubic-bezier(.22,1,.36,1)';i.style.opacity='1';i.style.transform='perspective(800px) scale(1) translateZ(0)'})}else{i.style.opacity='0';i.style.transform='perspective(800px) scale(.9) translateZ(-20px)';setTimeout(()=>i.style.display='none',500)}})});
+
+// ===== LIGHTBOX =====
+const lb=document.getElementById('lightbox'),li=document.getElementById('lightboxImg');let lbi=0,vis=[];
+function gvis(){vis=Array.from(gi).filter(i=>i.style.display!=='none')}
+function openLB(idx){gvis();lbi=idx;li.src=vis[lbi].querySelector('img').src;lb.classList.add('open');document.body.style.overflow='hidden'}
+function closeLB(){lb.classList.remove('open');document.body.style.overflow=''}
+function lbGo(d){lbi=(lbi+d+vis.length)%vis.length;li.style.opacity='0';setTimeout(()=>{li.src=vis[lbi].querySelector('img').src;li.style.opacity='1'},200)}
+li.style.transition='opacity .25s';
+gi.forEach((item,i)=>item.onclick=()=>{gvis();const v=vis.indexOf(item);openLB(v>=0?v:0)});
+document.getElementById('lightboxClose').onclick=closeLB;
+document.getElementById('lightboxPrev').onclick=()=>lbGo(-1);
+document.getElementById('lightboxNext').onclick=()=>lbGo(1);
+lb.onclick=e=>{if(e.target===lb)closeLB()};
+document.onkeydown=e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')lbGo(-1);if(e.key==='ArrowRight')lbGo(1)};
+
+// ===== FORM =====
+document.getElementById('enquiryForm').onsubmit=function(e){e.preventDefault();const t=document.getElementById('toast');t.classList.add('show');this.reset();setTimeout(()=>t.classList.remove('show'),5000)};
+document.getElementById('toastClose').onclick=()=>document.getElementById('toast').classList.remove('show');
+
+// ===== SMOOTH SCROLL =====
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.onclick=function(e){const t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-nb.offsetHeight-10,behavior:'smooth'})}});
+
+// ===== MOBILE BAR PADDING =====
+function mbp(){document.body.style.paddingBottom=window.innerWidth<768?'62px':'0'}
+mbp();window.onresize=mbp;
+
+})();
+</script>
+</body>
+</html>
